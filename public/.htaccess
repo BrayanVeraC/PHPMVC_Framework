@@ -1,0 +1,14 @@
+#Configuracion para redireccionar hacia el index.
+
+<IfModule mod_rewrite.c>
+
+#Quitamos las multivistas
+Options -Multiviews
+
+#En esta parte hacemos la reescritura de la URL
+RewriteEngine On
+RewriteBase /project/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
