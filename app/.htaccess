@@ -1,0 +1,3 @@
+#Proteje los archivos de la ruta APP prohibiendo el acceso.
+
+Options -Indexes
