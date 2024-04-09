@@ -18,12 +18,14 @@
     public function __construct() {
       $url = $this->getURL();
       //Buscar en los controladores (Controllers) si el controlador existe
-      if (file_exists('../app/controllers/' .ucwords(isset($url[0])). '.php')) {
-        //Si existe se setea como controlador por defecto
-        $this->currentController = ucwords($url[0]);
-
-        //Unset indice 0
-        unset($url[0]);
+      if (isset($url[0])) {
+        if (file_exists('../app/controllers/' .ucwords($url[0]). '.php')) {
+          //Si existe se setea como controlador por defecto
+          $this->currentController = ucwords($url[0]);
+  
+          //Unset indice 0
+          unset($url[0]);
+        }  
       }
       //Requerir el controlador
       require_once '../app/controllers/' . $this->currentController . '.php';
